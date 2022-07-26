@@ -21,6 +21,8 @@ public class FirstClass {
 	 */
 	public static void main(String[] args) {
 		
+		try {
+		
 		String login = JOptionPane.showInputDialog("Informe o seu login: ");
 		String senha = JOptionPane.showInputDialog("Informe a sua senha: ");
 
@@ -28,12 +30,12 @@ public class FirstClass {
 		
 		if (new functionAutentic(new Diretor(login, senha)).autenticar() == true) { /*Somente autorizados == implementação da interface*/
 		
-		List<Aluno> alunos = new ArrayList<Aluno>();
+		List<Aluno> alunos = null;
 		
 		/* É uma lista do tipo dicionario key-value */
 		HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>(); 
 		
-		for (int qtd = 1; qtd <= 5; qtd++) {
+		for (int qtd = 1; qtd <= 2; qtd++) {
 			
 			Aluno aluno1 = new Aluno();
 
@@ -138,6 +140,16 @@ public class FirstClass {
 		} else {
 			JOptionPane.showMessageDialog(null, "Acesso não autorizado");
 		}
+		
+		
+		/*Aqui*/
+		}catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas.");
+			
+		}
+			
+		
 	}
 }
 
