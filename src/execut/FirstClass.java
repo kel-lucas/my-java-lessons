@@ -30,7 +30,7 @@ public class FirstClass {
 		
 		if (new functionAutentic(new Diretor(login, senha)).autenticar() == true) { /*Somente autorizados == implementação da interface*/
 		
-		List<Aluno> alunos = null;
+		List<Aluno> alunos = new ArrayList<Aluno>();
 		
 		/* É uma lista do tipo dicionario key-value */
 		HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>(); 
@@ -144,8 +144,26 @@ public class FirstClass {
 		
 		/*Aqui*/
 		}catch (Exception e) {
+			
+			
+			StringBuilder saida = new StringBuilder();
+			
+			/*Imprimir erro no console*/
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro ao processar notas.");
+			
+			for (int i = 0; i < e.getStackTrace().length; i++){
+				
+				saida.append(" \nClasse de erro:" +e.getStackTrace()[i].getClassName());
+				saida.append(" \nMétodo do erro: " +e.getStackTrace()[i].getModuleName());
+				saida.append(" \nLinha do erro: " +e.getStackTrace()[i].getLineNumber());
+				saida.append("\n Class: " +e.getClass().getName());
+			}
+			
+			/*Imprim erro e causa e lugar deste.*/
+			System.out.println("Mensage: " + e.getMessage());
+			
+			 
+			JOptionPane.showMessageDialog(null, "Erro ao processar notas." + saida.toString());
 			
 		}
 			
